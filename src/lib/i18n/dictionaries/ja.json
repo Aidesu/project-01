@@ -1,0 +1,63 @@
+{
+    "sideBar": {
+        "mainBoard": "ダッシュボード",
+        "analytics": "分析",
+        "budgets": "予算",
+        "account": "口座"
+    },
+    "welcome": "おかえりなさい",
+    "yourYear": "年間収支",
+    "totalIncome": "総収入",
+    "totalFixedExpenses": "固定費合計",
+    "totalVariableExpenses": "変動費合計",
+    "totalSavings": "貯蓄合計",
+    "remaining": "残高",
+    "budgetForm": {
+        "title": "予算管理",
+        "saveButton": "予算を保存",
+        "categories": {
+            "income": "収入",
+            "savings": "貯蓄・投資",
+            "variable": "変動費",
+            "fixed": "固定費"
+        },
+        "fields": {
+            "salaryWage": "給与",
+            "partnerSalaryWage": "配偶者の給与",
+            "rentalIncome": "家賃収入",
+            "otherIncome": "その他の収入",
+
+            "emergencyFund": "緊急資金",
+            "retirementSaving": "老後資金",
+            "otherSavings": "その他の貯蓄・投資",
+
+            "groceries": "食費",
+            "diningOut": "外食・交際費",
+            "otherVariable": "その他",
+
+            "housing": "住居費（家賃・ローン）",
+            "propertyTaxes": "固定資産税",
+            "homeInsurance": "火災・地震保険",
+            "electricity": "電気代",
+            "water": "水道代",
+            "gas": "ガス代",
+            "internet": "通信費（ネット・携帯）",
+            "carPayment": "車のローン",
+            "gasoline": "ガソリン代",
+            "carInsurance": "自動車保険",
+            "publicTransport": "交通費",
+            "loanPayments": "ローン返済",
+            "studentLoans": "奨学金返済",
+            "creditCard": "クレジットカード支払い",
+            "personalLoan": "個人ローン",
+            "healthInsurance": "健康保険",
+            "medications": "処方薬",
+            "healthExpenses": "医療費",
+            "incomeTax": "所得税",
+            "subscriptions": "サブスクリプション",
+            "streaming": "動画配信サービス",
+            "magazines": "雑誌・書籍",
+            "othersFixed": "その他"
+        }
+    }
+}

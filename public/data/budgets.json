@@ -1,0 +1,11 @@
+[
+    {
+        "id": "1",
+        "date": "2016-04-23T18:25:43.511Z",
+        "total_income": 4280,
+        "total_fixed_expenses": 2390,
+        "total_variable_expenses": 400,
+        "total_savings": 580,
+        "remaining": 200
+    }
+]

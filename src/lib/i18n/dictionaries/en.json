@@ -1,0 +1,63 @@
+{
+    "sideBar": {
+        "mainBoard": "Main Board",
+        "analytics": "Analytics",
+        "budgets": "Budgets",
+        "account": "Account"
+    },
+    "welcome": "Welcome to StatEco",
+    "yourYear": "Your year",
+    "totalIncome": "Total Income",
+    "totalFixedExpenses": "Total Fixed Expenses",
+    "totalVariableExpenses": "Total Variable Expenses",
+    "totalSavings": "Total Savings",
+    "remaining": "Remaining",
+    "budgetForm": {
+        "title": "Budget Management",
+        "saveButton": "Save Budget",
+        "categories": {
+            "income": "Income",
+            "savings": "Saving Investments",
+            "variable": "Variable Expenses",
+            "fixed": "Fixed Expenses"
+        },
+        "fields": {
+            "salaryWage": "Salary Wage",
+            "partnerSalaryWage": "Partner's Salary Wage",
+            "rentalIncome": "Rental Income",
+            "otherIncome": "Other Income",
+
+            "emergencyFund": "Emergency Fund",
+            "retirementSaving": "Retirement Saving",
+            "otherSavings": "Other Savings / Investments",
+
+            "groceries": "Groceries",
+            "diningOut": "Dining Out / Entertainment",
+            "otherVariable": "Other",
+
+            "housing": "Housing",
+            "propertyTaxes": "Property Taxes",
+            "homeInsurance": "Home Insurance",
+            "electricity": "Electricity",
+            "water": "Water",
+            "gas": "Gas",
+            "internet": "Internet/Cable/Phone",
+            "carPayment": "Car Payment",
+            "gasoline": "Gasoline Fuel",
+            "carInsurance": "Insurance",
+            "publicTransport": "Public Transportation",
+            "loanPayments": "Loan Payments",
+            "studentLoans": "Student Loans",
+            "creditCard": "Credit Card Payment",
+            "personalLoan": "Personal Loan",
+            "healthInsurance": "Health And insurance",
+            "medications": "Prescription Medications",
+            "healthExpenses": "Health-related Expenses",
+            "incomeTax": "Income Tax",
+            "subscriptions": "Subscriptions",
+            "streaming": "Streaming Services",
+            "magazines": "Magazines",
+            "othersFixed": "Others"
+        }
+    }
+}

@@ -1,0 +1,63 @@
+{
+    "sideBar": {
+        "mainBoard": "Tableau de bord",
+        "analytics": "Analyse",
+        "budgets": "Budget",
+        "account": "Compte"
+    },
+    "welcome": "Bienvenue sur StatEco",
+    "yourYear": "Votre annees",
+    "totalIncome": "Revenus Totaux",
+    "totalFixedExpenses": "Dépenses Fixes Totales",
+    "totalVariableExpenses": "Dépenses Variables Totales",
+    "totalSavings": "Épargne Totale",
+    "remaining": "Restant",
+    "budgetForm": {
+        "title": "Gestion du Budget",
+        "saveButton": "Enregistrer le Budget",
+        "categories": {
+            "income": "Revenus",
+            "savings": "Épargne et Investissements",
+            "variable": "Dépenses Variables",
+            "fixed": "Dépenses Fixes"
+        },
+        "fields": {
+            "salaryWage": "Salaire",
+            "partnerSalaryWage": "Salaire du Conjoint",
+            "rentalIncome": "Revenus Locatifs",
+            "otherIncome": "Autres Revenus",
+
+            "emergencyFund": "Fonds d'Urgence",
+            "retirementSaving": "Épargne Retraite",
+            "otherSavings": "Autres Épargnes / Investissements",
+
+            "groceries": "Courses (Alimentation)",
+            "diningOut": "Restaurants et Sorties",
+            "otherVariable": "Autres",
+
+            "housing": "Logement (Loyer/Prêt)",
+            "propertyTaxes": "Taxes Foncières",
+            "homeInsurance": "Assurance Habitation",
+            "electricity": "Électricité",
+            "water": "Eau",
+            "gas": "Gaz",
+            "internet": "Internet / Câble / Téléphone",
+            "carPayment": "Mensualité Voiture",
+            "gasoline": "Carburant",
+            "carInsurance": "Assurance Auto",
+            "publicTransport": "Transports en Commun",
+            "loanPayments": "Remboursement de Prêts",
+            "studentLoans": "Prêts Étudiants",
+            "creditCard": "Remboursement Carte de Crédit",
+            "personalLoan": "Prêt Personnel",
+            "healthInsurance": "Assurance Maladie / Mutuelle",
+            "medications": "Médicaments",
+            "healthExpenses": "Dépenses de Santé",
+            "incomeTax": "Impôt sur le Revenu",
+            "subscriptions": "Abonnements",
+            "streaming": "Services de Streaming",
+            "magazines": "Magazines",
+            "othersFixed": "Autres"
+        }
+    }
+}
