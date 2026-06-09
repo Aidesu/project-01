@@ -1,17 +1,78 @@
 {
     "sideBar": {
+        "menuTitle": "Menu Principal",
+        "financeTitle": "Finance",
         "mainBoard": "Tableau de bord",
         "analytics": "Analyse",
         "budgets": "Budget",
-        "account": "Compte"
+        "account": "Compte",
+        "connected": "Connecté"
     },
-    "welcome": "Bienvenue sur StatEco",
-    "yourYear": "Votre annees",
+    "welcome": "Bienvenue",
+    "yourYear": "Votre année",
     "totalIncome": "Revenus Totaux",
-    "totalFixedExpenses": "Dépenses Fixes Totales",
-    "totalVariableExpenses": "Dépenses Variables Totales",
-    "totalSavings": "Épargne Totale",
+    "totalFixedExpenses": "Dépenses Fixes",
+    "totalVariableExpenses": "Dépenses Variables",
+    "totalSavings": "Épargne",
     "remaining": "Restant",
+    "comingSoon": "Bientôt disponible",
+    "dashboard": {
+        "analysisTitle": "Vue mensuelle",
+        "analysisSubtitle": "Revenus, dépenses et épargne sur les 6 derniers mois",
+        "distributionTitle": "Répartition",
+        "distributionSubtitle": "Période en cours",
+        "noBudgetCurrentMonth": "Aucun budget pour ce mois.",
+        "createBudget": "Créer le budget",
+        "noDataYet": "Aucun budget enregistré",
+        "createFirstBudget": "Créez votre premier budget pour commencer.",
+        "vsLastMonth": "vs mois précédent",
+        "fixed": "Fixes",
+        "variable": "Variables",
+        "savings": "Épargne",
+        "income": "Revenus",
+        "expenses": "Dépenses"
+    },
+    "account": {
+        "title": "Paramètres du compte",
+        "profile": "Profil",
+        "personalInfo": "Informations personnelles",
+        "fullName": "Nom complet",
+        "email": "Email",
+        "emailReadonly": "Votre email ne peut pas être modifié",
+        "preferences": "Préférences",
+        "currency": "Devise",
+        "language": "Langue",
+        "incomeRange": "Tranche de revenu",
+        "savingsGoal": "Objectif d'épargne mensuel",
+        "saveChanges": "Enregistrer",
+        "saved": "Enregistré",
+        "security": "Sécurité",
+        "currentPassword": "Mot de passe actuel",
+        "newPassword": "Nouveau mot de passe",
+        "confirmPassword": "Confirmer le mot de passe",
+        "updatePassword": "Mettre à jour",
+        "session": "Session",
+        "logoutDescription": "Déconnecter toutes les sessions actives",
+        "logout": "Se déconnecter",
+        "incomeRanges": {
+            "": "— Sélectionner —",
+            "lt25k": "< 25 000 €",
+            "25k50k": "25 000 € – 50 000 €",
+            "50k75k": "50 000 € – 75 000 €",
+            "75k100k": "75 000 € – 100 000 €",
+            "100k150k": "100 000 € – 150 000 €",
+            "gt150k": "> 150 000 €",
+            "preferNotToSay": "Je préfère ne pas répondre"
+        }
+    },
+    "graphicCard": {
+        "export": "Exporter"
+    },
+    "budgets": {
+        "title": "Mes Budgets",
+        "newButton": "NOUVEAU",
+        "searchPlaceholder": "Rechercher un budget..."
+    },
     "budgetForm": {
         "title": "Gestion du Budget",
         "saveButton": "Enregistrer le Budget",
@@ -22,20 +83,18 @@
             "fixed": "Dépenses Fixes"
         },
         "fields": {
+            "month": "Mois",
             "salaryWage": "Salaire",
             "partnerSalaryWage": "Salaire du Conjoint",
             "rentalIncome": "Revenus Locatifs",
             "otherIncome": "Autres Revenus",
-
             "emergencyFund": "Fonds d'Urgence",
             "retirementSaving": "Épargne Retraite",
             "otherSavings": "Autres Épargnes / Investissements",
-
             "groceries": "Courses (Alimentation)",
             "diningOut": "Restaurants et Sorties",
             "otherVariable": "Autres",
-
-            "housing": "Logement (Loyer/Prêt)",
+            "housing": "Logement (Loyer / Prêt)",
             "propertyTaxes": "Taxes Foncières",
             "homeInsurance": "Assurance Habitation",
             "electricity": "Électricité",

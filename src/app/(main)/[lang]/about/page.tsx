@@ -1,7 +1,22 @@
-export default function aboutPage() {
+import { getDictionary } from "@/lib/i18n/dictionaries";
+
+export default async function AboutPage({
+    params,
+}: {
+    params: Promise<{ lang: string }>;
+}) {
+    const { lang } = await params;
+    const dict = await getDictionary(lang);
+
     return (
-        <div>
-            <h1>Feur</h1>
+        <div className="flex flex-col items-center justify-center h-[60vh] gap-3 text-center">
+            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-purple-500/10 border border-purple-500/20">
+                <svg className="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
+                </svg>
+            </div>
+            <h1 className="text-xl font-semibold text-white">StatEco</h1>
+            <p className="text-sm text-zinc-500">{dict.comingSoon}</p>
         </div>
     );
 }

@@ -23,9 +23,7 @@ export default function BudgetBar({ data }: BudgetBarProps) {
     useEffect(() => {
         if (!chartRef.current) return;
 
-        const myChart = echarts.init(chartRef.current, undefined, {
-            backgroundColor: "transparent",
-        });
+        const myChart = echarts.init(chartRef.current);
 
         // Application des dégradés
         const processedData = data.map((item) => {
@@ -51,6 +49,7 @@ export default function BudgetBar({ data }: BudgetBarProps) {
         });
 
         const option = {
+            backgroundColor: "transparent",
             grid: {
                 left: "4%",
                 right: "4%",

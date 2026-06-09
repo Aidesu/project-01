@@ -2,7 +2,11 @@
 
 import { useState } from "react";
 
-export default function SearchBar() {
+interface SearchBarProps {
+    placeholder?: string;
+}
+
+export default function SearchBar({ placeholder = "Search..." }: SearchBarProps) {
     const [search, setSearch] = useState("");
 
     return (
@@ -11,15 +15,14 @@ export default function SearchBar() {
                 type="text"
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                placeholder="Search budgets..."
-                className="w-full bg-gray-900 border border-gray-700 text-white text-sm rounded-full px-5 py-2.5 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all placeholder-gray-500"
+                placeholder={placeholder}
+                className="w-full bg-[#0d0d11] border border-zinc-800/80 text-white text-sm rounded-full px-5 py-2.5 focus:outline-none focus:border-purple-500/50 focus:ring-1 focus:ring-purple-500/30 transition-all placeholder-zinc-600"
             />
             <svg
-                className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400"
+                className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-500"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
             >
                 <path
                     strokeLinecap="round"

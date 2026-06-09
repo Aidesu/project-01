@@ -1,17 +1,78 @@
 {
     "sideBar": {
+        "menuTitle": "メインメニュー",
+        "financeTitle": "ファイナンス",
         "mainBoard": "ダッシュボード",
         "analytics": "分析",
         "budgets": "予算",
-        "account": "口座"
+        "account": "口座",
+        "connected": "接続中"
     },
     "welcome": "おかえりなさい",
     "yourYear": "年間収支",
     "totalIncome": "総収入",
-    "totalFixedExpenses": "固定費合計",
-    "totalVariableExpenses": "変動費合計",
-    "totalSavings": "貯蓄合計",
+    "totalFixedExpenses": "固定費",
+    "totalVariableExpenses": "変動費",
+    "totalSavings": "貯蓄",
     "remaining": "残高",
+    "comingSoon": "近日公開予定",
+    "dashboard": {
+        "analysisTitle": "月次推移",
+        "analysisSubtitle": "過去6ヶ月の収入・支出・貯蓄",
+        "distributionTitle": "内訳",
+        "distributionSubtitle": "今月",
+        "noBudgetCurrentMonth": "今月の予算がまだ登録されていません。",
+        "createBudget": "予算を作成",
+        "noDataYet": "データがまだありません",
+        "createFirstBudget": "最初の予算を作成してください。",
+        "vsLastMonth": "先月比",
+        "fixed": "固定費",
+        "variable": "変動費",
+        "savings": "貯蓄",
+        "income": "収入",
+        "expenses": "支出"
+    },
+    "account": {
+        "title": "アカウント設定",
+        "profile": "プロフィール",
+        "personalInfo": "個人情報",
+        "fullName": "氏名",
+        "email": "メールアドレス",
+        "emailReadonly": "メールアドレスは変更できません",
+        "preferences": "設定",
+        "currency": "通貨",
+        "language": "言語",
+        "incomeRange": "収入帯",
+        "savingsGoal": "月間貯蓄目標",
+        "saveChanges": "保存",
+        "saved": "保存しました",
+        "security": "セキュリティ",
+        "currentPassword": "現在のパスワード",
+        "newPassword": "新しいパスワード",
+        "confirmPassword": "パスワードの確認",
+        "updatePassword": "パスワードを更新",
+        "session": "セッション",
+        "logoutDescription": "全てのセッションからサインアウト",
+        "logout": "ログアウト",
+        "incomeRanges": {
+            "": "— 選択 —",
+            "lt25k": "250万円未満",
+            "25k50k": "250万 – 500万円",
+            "50k75k": "500万 – 750万円",
+            "75k100k": "750万 – 1,000万円",
+            "100k150k": "1,000万 – 1,500万円",
+            "gt150k": "1,500万円以上",
+            "preferNotToSay": "回答しない"
+        }
+    },
+    "graphicCard": {
+        "export": "エクスポート"
+    },
+    "budgets": {
+        "title": "予算一覧",
+        "newButton": "新規作成",
+        "searchPlaceholder": "予算を検索..."
+    },
     "budgetForm": {
         "title": "予算管理",
         "saveButton": "予算を保存",
@@ -22,19 +83,17 @@
             "fixed": "固定費"
         },
         "fields": {
+            "month": "月",
             "salaryWage": "給与",
             "partnerSalaryWage": "配偶者の給与",
             "rentalIncome": "家賃収入",
             "otherIncome": "その他の収入",
-
             "emergencyFund": "緊急資金",
             "retirementSaving": "老後資金",
             "otherSavings": "その他の貯蓄・投資",
-
             "groceries": "食費",
             "diningOut": "外食・交際費",
             "otherVariable": "その他",
-
             "housing": "住居費（家賃・ローン）",
             "propertyTaxes": "固定資産税",
             "homeInsurance": "火災・地震保険",

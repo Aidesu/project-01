@@ -1,6 +1,7 @@
 "use client";
 // components/layouts/Header.tsx
 import LanguageSwitcher from "./LanguageSwitcher";
+import { logout } from "@/app/actions/auth";
 
 export default function Header() {
     return (
@@ -13,7 +14,17 @@ export default function Header() {
                 <span className="inline-block w-2 h-2 ml-1 bg-purple-400 rounded-full animate-pulse" />
             </h1>
 
-            <LanguageSwitcher />
+            <div className="flex items-center gap-4">
+                <LanguageSwitcher />
+                <form action={logout}>
+                    <button
+                        type="submit"
+                        className="rounded-lg border border-white/10 px-3 py-1 text-sm text-zinc-300 transition hover:bg-white/10 hover:text-white"
+                    >
+                        Déconnexion
+                    </button>
+                </form>
+            </div>
         </header>
     );
 }

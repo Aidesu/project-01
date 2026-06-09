@@ -6,13 +6,13 @@ interface GraphicCard2Props {
     month: string;
     year: string | number;
     children: React.ReactNode;
+    isCurrent?: boolean;
     onModify?: () => void;
     onDelete?: () => void;
-    // Nouvelle prop pour gérer la flèche et le % dynamiquement par mois
     trend?: {
-        value: string; // ex: "23%"
-        label: string; // ex: "save"
-        type: "up" | "down"; // up = vert, down = rouge
+        value: string;
+        label: string;
+        type: "up" | "down";
     };
 }
 
@@ -20,14 +20,21 @@ export default function GraphicCard2({
     month,
     year,
     children,
+    isCurrent = false,
     onModify,
     onDelete,
     trend,
 }: GraphicCard2Props) {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-    return (
-        <div className="flex flex-col bg-[#0d0d11] border border-zinc-800/80 rounded-xl shadow-xl w-full h-[320px] relative">
+    const card = (
+        <div
+            className={`flex flex-col rounded-xl shadow-xl w-full h-[320px] relative ${
+                isCurrent
+                    ? "bg-[#0f0b1a]"
+                    : "bg-[#0d0d11] border border-zinc-800/80"
+            }`}
+        >
             {/* Top Bar : Aligné aux deux extrémités de la ligne */}
             <div className="flex justify-between items-center pt-3 px-4 select-none">
                 {/* À GAUCHE : Badge de tendance moderne */}
@@ -78,10 +85,17 @@ export default function GraphicCard2({
                     <div />
                 )}
 
-                {/* À DROITE : L'année */}
-                <span className="text-[10px] font-mono font-bold text-zinc-500 tracking-wider">
-                    {year}
-                </span>
+                {/* À DROITE : badge "Ce mois" + année */}
+                <div className="flex items-center gap-2">
+                    {isCurrent && (
+                        <span className="rounded-full bg-purple-600/20 border border-purple-500/30 px-2 py-0.5 text-[10px] font-semibold text-purple-300 tracking-wider uppercase">
+                            Ce mois
+                        </span>
+                    )}
+                    <span className="text-[10px] font-mono font-bold text-zinc-500 tracking-wider">
+                        {year}
+                    </span>
+                </div>
             </div>
 
             {/* Zone du graphique (Hauteur fixe pour ECharts) */}
@@ -145,6 +159,31 @@ export default function GraphicCard2({
                     )}
                 </div>
             </div>
+        </div>
+    );
+
+    if (!isCurrent) return card;
+
+    // Gradient border : wrapper avec padding 1px, background gradient → inner card par-dessus.
+    return (
+        <div
+            className="rounded-xl w-full h-[320px] relative"
+            style={{
+                padding: "1px",
+                background:
+                    "linear-gradient(135deg, #7c3aed 0%, #a855f7 40%, #3b1d6e 80%, #1e1333 100%)",
+                boxShadow: "0 0 32px 0 rgba(124,58,237,0.18)",
+            }}
+        >
+            {/* Glow ambiant derrière la carte */}
+            <div
+                className="pointer-events-none absolute inset-0 rounded-xl"
+                style={{
+                    background:
+                        "radial-gradient(ellipse at 50% 0%, rgba(139,92,246,0.12) 0%, transparent 70%)",
+                }}
+            />
+            {card}
         </div>
     );
 }
