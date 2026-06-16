@@ -82,8 +82,8 @@ Monthly budgets, savings goals, analytics and market tracking — all in a moder
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/<your-account>/stateko.git
-cd stateko
+git clone https://github.com/Aidesu/project-01
+cd project-01
 
 # 2. Install dependencies
 npm install
