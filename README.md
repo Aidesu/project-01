@@ -49,7 +49,7 @@ Monthly budgets, savings goals, analytics and market tracking — all in a moder
 | 💰 **Budgets**        | Detailed monthly budgets broken down by category (income, fixed costs, variable expenses, savings) |
 | 🎯 **Goals**          | Typed savings goals (travel, car, home, emergency…) with progress tracking and pinning             |
 | 📈 **Analytics**      | Monthly overview, expense breakdown, and trends powered by ECharts                                 |
-| 🪙 **Markets**        | Asset tracking with real-time prices (polled every 5 s)                                            |
+| 📉 **Markets**        | Asset tracking with real-time prices (polled every 5 s)                                            |
 | 🌍 **Multilingual**   | Per-language routing (`/[lang]`) — English, French, Japanese                                       |
 | 🎨 **Modern UI**      | Responsive design with Tailwind CSS 4 and FontAwesome icons                                        |
 
