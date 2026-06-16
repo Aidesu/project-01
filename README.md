@@ -1,6 +1,6 @@
 <div align="">
 
-# 📊 StatEko
+# StatEko
 
 **Personal finance management, clear and multilingual.**
 
