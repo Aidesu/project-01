@@ -57,16 +57,25 @@ const FIELD_MAP: {
     { field: "othersFixed", category: "OTHERS", type: "FIXED" },
 ];
 
-export async function saveBudget(formData: FormData) {
+export type BudgetActionState =
+    | {
+          success?: boolean;
+          message?: string;
+      }
+    | undefined;
+
+/**
+ * Action unique pour le formulaire de budget (création ET édition).
+ * - Si `budgetId` est présent dans le formulaire : met à jour ce budget précis et
+ *   renvoie un état (utilisé par la popup d'édition pour se fermer).
+ * - Sinon : upsert sur (utilisateur, mois, année) puis redirige (page de création).
+ */
+export async function submitBudget(
+    _prevState: BudgetActionState,
+    formData: FormData,
+): Promise<BudgetActionState> {
     // Sécurité : l'utilisateur doit être connecté ; on récupère son id réel.
     const { userId } = await verifySession();
-
-    // Mois ciblé : champ "period" au format AAAA-MM, sinon le mois courant.
-    const period = String(formData.get("period") ?? "");
-    const match = period.match(/^(\d{4})-(\d{2})$/);
-    const now = new Date();
-    const year = match ? parseInt(match[1], 10) : now.getFullYear();
-    const month = match ? parseInt(match[2], 10) : now.getMonth() + 1;
 
     const lang = String(formData.get("lang") ?? "en");
 
@@ -78,7 +87,34 @@ export async function saveBudget(formData: FormData) {
         amount: parseFloat(String(formData.get(field) ?? "")) || 0,
     })).filter((item) => item.amount > 0);
 
-    // Un seul budget par (utilisateur, mois, année) : on remplace s'il existe déjà.
+    const budgetId = String(formData.get("budgetId") ?? "");
+
+    if (budgetId) {
+        // Édition : on remplace les items du budget visé (vérifie qu'il appartient bien à l'utilisateur).
+        const budget = await db.budget.findFirst({
+            where: { id: budgetId, userId },
+        });
+        if (!budget) {
+            return { success: false, message: "Budget introuvable." };
+        }
+
+        await db.budgetItem.deleteMany({ where: { budgetId } });
+        await db.budget.update({
+            where: { id: budgetId },
+            data: { items: { create: items } },
+        });
+
+        revalidatePath(`/${lang}/budgets`);
+        return { success: true };
+    }
+
+    // Création : un seul budget par (utilisateur, mois, année) — on remplace s'il existe déjà.
+    const period = String(formData.get("period") ?? "");
+    const match = period.match(/^(\d{4})-(\d{2})$/);
+    const now = new Date();
+    const year = match ? parseInt(match[1], 10) : now.getFullYear();
+    const month = match ? parseInt(match[2], 10) : now.getMonth() + 1;
+
     const existing = await db.budget.findFirst({
         where: { userId, month, year },
     });
@@ -98,4 +134,13 @@ export async function saveBudget(formData: FormData) {
     // Rafraîchit la liste puis redirige automatiquement vers la page des budgets.
     revalidatePath(`/${lang}/budgets`);
     redirect(`/${lang}/budgets`);
+}
+
+/** Supprime définitivement un budget appartenant à l'utilisateur connecté. */
+export async function deleteBudget(budgetId: string, lang: string) {
+    const { userId } = await verifySession();
+
+    await db.budget.deleteMany({ where: { id: budgetId, userId } });
+
+    revalidatePath(`/${lang}/budgets`);
 }

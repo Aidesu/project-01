@@ -15,6 +15,9 @@ const { auth } = NextAuth(authConfig);
 
 const DEFAULT_LOCALE = "en";
 
+/** Pages publiques (landing + légal) : accessibles sans session. */
+const PUBLIC_PATHS = new Set(["/", "/about", "/terms"]);
+
 export default auth((req) => {
     const { nextUrl } = req;
     const { pathname } = nextUrl;
@@ -23,11 +26,10 @@ export default auth((req) => {
     const isAuthPage =
         pathname.startsWith("/login") || pathname.startsWith("/register");
 
-    // Racine : on aiguille selon l'état de connexion.
-    if (pathname === "/") {
-        return NextResponse.redirect(
-            new URL(isLoggedIn ? `/${DEFAULT_LOCALE}` : "/login", nextUrl),
-        );
+    // Landing, à-propos, conditions : toujours accessibles (la page adapte
+    // ses CTA selon l'état de connexion).
+    if (PUBLIC_PATHS.has(pathname)) {
+        return NextResponse.next();
     }
 
     // Connecté sur une page d'auth → vers le dashboard.

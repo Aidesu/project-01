@@ -3,9 +3,10 @@
 import { useActionState } from "react";
 import { updateProfile, type AuthFormState } from "@/app/actions/auth";
 import { CURRENCIES, LOCALES } from "@/lib/validation/auth";
+import type { Dictionary } from "@/lib/i18n/dictionaries";
 
 interface ProfileFormProps {
-    dict: any;
+    dict: Dictionary;
     user: {
         name: string | null;
         email: string | null;
@@ -28,7 +29,6 @@ export default function ProfileForm({ dict, user }: ProfileFormProps) {
     const inputClass =
         "w-full rounded-lg border border-zinc-800 bg-zinc-900/60 px-3 py-2 text-sm text-white outline-none focus:border-purple-500/50 focus:ring-1 focus:ring-purple-500/20 transition-colors placeholder-zinc-600";
     const selectClass = inputClass + " [color-scheme:dark]";
-    const labelClass = "block text-xs font-medium text-zinc-400 mb-1.5";
 
     const incomeRanges = a.incomeRanges as Record<string, string>;
 

@@ -5,6 +5,7 @@
         "mainBoard": "Tableau de bord",
         "analytics": "Analyse",
         "budgets": "Budget",
+        "goals": "Objectifs",
         "markets": "Marchés",
         "account": "Compte",
         "connected": "Connecté"
@@ -19,7 +20,7 @@
     "comingSoon": "Bientôt disponible",
     "dashboard": {
         "analysisTitle": "Vue mensuelle",
-        "analysisSubtitle": "Revenus, dépenses et épargne sur les 6 derniers mois",
+        "analysisSubtitle": "Dépenses empilées vs revenus — l'écart sous la ligne est votre reste à vivre",
         "distributionTitle": "Répartition",
         "distributionSubtitle": "Période en cours",
         "noBudgetCurrentMonth": "Aucun budget pour ce mois.",
@@ -27,6 +28,18 @@
         "noDataYet": "Aucun budget enregistré",
         "createFirstBudget": "Créez votre premier budget pour commencer.",
         "vsLastMonth": "vs mois précédent",
+        "thisMonth": "Ce mois-ci",
+        "trends": "Tendances",
+        "analysis": "Analyse",
+        "fullAnalysis": "Voir l'analyse complète",
+        "leftToSpend": "Reste à dépenser",
+        "overBudget": "Budget dépassé",
+        "allocated": "{pct} % du revenu alloué",
+        "viewBudgets": "Mes budgets",
+        "goals": "Objectifs",
+        "viewAllGoals": "Voir tous les objectifs",
+        "goalsEmpty": "Créez un objectif d'épargne pour le suivre ici.",
+        "createGoal": "Créer un objectif",
         "fixed": "Fixes",
         "variable": "Variables",
         "savings": "Épargne",
@@ -72,11 +85,26 @@
     "budgets": {
         "title": "Mes Budgets",
         "newButton": "NOUVEAU",
-        "searchPlaceholder": "Rechercher un budget..."
+        "searchPlaceholder": "Rechercher un budget...",
+        "editAction": "Modifier",
+        "deleteAction": "Supprimer"
     },
     "budgetForm": {
         "title": "Gestion du Budget",
+        "editTitle": "Modifier le Budget",
         "saveButton": "Enregistrer le Budget",
+        "overwriteModal": {
+            "title": "Budget existant",
+            "description": "Un budget pour {period} existe déjà. Voulez-vous l'écraser avec ces nouvelles valeurs ?",
+            "cancel": "Annuler",
+            "confirm": "Écraser"
+        },
+        "deleteModal": {
+            "title": "Supprimer ce budget ?",
+            "description": "Le budget de {period} sera définitivement supprimé. Cette action est irréversible.",
+            "cancel": "Annuler",
+            "confirm": "Supprimer"
+        },
         "categories": {
             "income": "Revenus",
             "savings": "Épargne et Investissements",
@@ -119,5 +147,204 @@
             "magazines": "Magazines",
             "othersFixed": "Autres"
         }
+    },
+    "analytics": {
+        "title": "Analyse",
+        "subtitle": "Explorez vos données budgétaires en profondeur",
+        "exportCsv": "Exporter CSV",
+        "noDataYet": "Aucun budget enregistré",
+        "createFirstBudget": "Créez votre premier budget pour débloquer l'analyse.",
+        "createBudget": "Créer le budget",
+        "yearStats": {
+            "totalSaved": "Épargné cette année",
+            "avgSavingsRate": "Taux d'épargne moyen",
+            "avgExpenses": "Dépenses mensuelles moy.",
+            "monthsTracked": "Mois suivis"
+        },
+        "healthScore": {
+            "title": "Santé budgétaire",
+            "subtitle": "Score global pour {period}",
+            "excellent": "Excellent",
+            "good": "Bon",
+            "fair": "Moyen",
+            "poor": "À surveiller",
+            "savingsRate": "Taux d'épargne",
+            "spendingControl": "Maîtrise des dépenses",
+            "safetyMargin": "Marge de sécurité",
+            "noIncome": "Ajoutez des revenus à ce budget pour calculer un score."
+        },
+        "savingsGoal": {
+            "title": "Objectif d'épargne",
+            "subtitle": "Progression pour {period}",
+            "saved": "épargné",
+            "ofGoal": "sur {goal}",
+            "reached": "Objectif atteint !",
+            "remainingToGoal": "{amount} restant",
+            "noGoal": "Aucun objectif d'épargne mensuel défini.",
+            "setGoal": "Définir un objectif"
+        },
+        "rule": {
+            "title": "Règle 50/30/20",
+            "subtitle": "Votre répartition vs la répartition recommandée",
+            "needs": "Besoins",
+            "wants": "Envies",
+            "savings": "Épargne",
+            "unallocated": "Non alloué",
+            "yourBudget": "Votre budget",
+            "recommended": "Recommandé",
+            "noIncome": "Ajoutez des revenus à ce budget pour comparer les répartitions."
+        },
+        "cashflow": {
+            "title": "Flux de trésorerie",
+            "subtitle": "Revenus vs dépenses sur les 12 derniers mois",
+            "income": "Revenus",
+            "expenses": "Dépenses",
+            "savings": "Épargne"
+        },
+        "savingsRateChart": {
+            "title": "Taux d'épargne",
+            "subtitle": "Part du revenu épargnée chaque mois",
+            "target": "Cible 20 %",
+            "rate": "Taux d'épargne"
+        },
+        "comparison": {
+            "title": "vs mois précédent",
+            "subtitle": "Évolution depuis {period}",
+            "income": "Revenus",
+            "expenses": "Dépenses",
+            "savings": "Épargne",
+            "remaining": "Restant",
+            "noPrevious": "Pas encore de mois précédent à comparer."
+        },
+        "topCategories": {
+            "title": "Principales dépenses",
+            "subtitle": "Où va votre argent — {period}",
+            "ofExpenses": "des dépenses",
+            "noExpenses": "Aucune dépense enregistrée pour cette période."
+        },
+        "insights": {
+            "title": "Points clés",
+            "subtitle": "Faits marquants générés à partir de vos données",
+            "expensesUp": "Vos dépenses ont augmenté de {pct} % par rapport au mois dernier.",
+            "expensesDown": "Vos dépenses ont diminué de {pct} % par rapport au mois dernier.",
+            "savingsRateLow": "Vous épargnez {pct} % de vos revenus — la cible recommandée est 20 %.",
+            "savingsRateGood": "Bravo ! Vous épargnez {pct} % de vos revenus, au-dessus de la cible des 20 %.",
+            "goalReached": "Vous avez atteint votre objectif d'épargne mensuel !",
+            "goalProgress": "Vous êtes à {pct} % de votre objectif d'épargne mensuel.",
+            "negativeRemaining": "Vos dépenses dépassent vos revenus ce mois-ci.",
+            "topCategory": "{category} est votre plus gros poste de dépense ({pct} % du total).",
+            "bestMonth": "Votre meilleur mois d'épargne cette année : {month}.",
+            "noInsights": "Ajoutez plus de budgets pour débloquer les points clés."
+        }
+    },
+    "goals": {
+        "title": "Objectifs d'épargne",
+        "subtitle": "Fixez des caps et regardez-les se remplir",
+        "newGoal": "Nouvel objectif",
+        "editGoal": "Modifier l'objectif",
+        "editAction": "Modifier",
+        "deleteAction": "Supprimer",
+        "pinAction": "Épingler",
+        "unpinAction": "Désépingler",
+        "contribute": "Ajouter des fonds",
+        "noGoals": "Aucun objectif pour l'instant",
+        "createFirst": "Créez votre premier objectif et rendez l'épargne amusante.",
+        "summary": {
+            "saved": "Total épargné",
+            "target": "Cible totale",
+            "reached": "Objectifs atteints",
+            "overall": "Progression globale"
+        },
+        "form": {
+            "name": "Nom de l'objectif",
+            "namePlaceholder": "ex : Voyage à Tokyo",
+            "type": "Thème",
+            "targetAmount": "Montant cible",
+            "savedAmount": "Déjà épargné",
+            "targetDate": "Date cible (optionnel)",
+            "save": "Enregistrer l'objectif",
+            "cancel": "Annuler",
+            "invalid": "Saisissez un nom et un montant cible supérieur à 0."
+        },
+        "contributeModal": {
+            "title": "Ajouter des fonds à « {name} »",
+            "amount": "Montant",
+            "confirm": "Ajouter",
+            "cancel": "Annuler"
+        },
+        "deleteModal": {
+            "title": "Supprimer cet objectif ?",
+            "description": "« {name} » sera définitivement supprimé. Cette action est irréversible.",
+            "confirm": "Supprimer",
+            "cancel": "Annuler"
+        },
+        "types": {
+            "TRAVEL": "Voyage",
+            "CAR": "Voiture",
+            "HOME": "Logement",
+            "EMERGENCY": "Fonds d'urgence",
+            "TECH": "High-tech",
+            "EDUCATION": "Études",
+            "GIFT": "Cadeau",
+            "OTHER": "Autre"
+        },
+        "card": {
+            "saved": "épargné",
+            "of": "sur",
+            "toGo": "{amount} restant",
+            "reached": "Objectif atteint !",
+            "boardingPass": "CARTE D'EMBARQUEMENT",
+            "flight": "VOL",
+            "passenger": "PASSAGER",
+            "from": "DÉPART",
+            "to": "DESTINATION",
+            "savingsAccount": "ÉPARGNE",
+            "date": "DATE",
+            "gate": "PORTE",
+            "seat": "SIÈGE",
+            "charging": "En charge…",
+            "fullyCharged": "Charge complète",
+            "underConstruction": "En construction",
+            "moveInReady": "Prêt à emménager !",
+            "protected": "Protégé",
+            "building": "Protection en cours…",
+            "cruising": "En croisière à {pct} %",
+            "arrived": "Arrivé à destination !"
+        }
+    },
+    "markets": {
+        "title": "Marchés",
+        "subtitle": "Suivez les cours crypto et bourse, puis plongez dans le graphique.",
+        "searchPlaceholder": "Rechercher par nom ou symbole…",
+        "all": "Tous",
+        "crypto": "Crypto",
+        "stocks": "Actions",
+        "forex": "Devises",
+        "asset": "Actif",
+        "price": "Prix",
+        "change24h": "24 h",
+        "last7d": "Tendance",
+        "noResults": "Aucun actif ne correspond à votre recherche.",
+        "loadError": "Les données de marché sont indisponibles pour le moment. Réessayez dans quelques minutes.",
+        "back": "Marchés",
+        "open": "Ouverture",
+        "high": "Plus haut",
+        "low": "Plus bas",
+        "close": "Clôture",
+        "volume": "Volume",
+        "range1mo": "1 M",
+        "range3mo": "3 M",
+        "range1y": "1 A",
+        "range5y": "5 A",
+        "rangeLive": "5 s",
+        "range1d": "5 min",
+        "rangeMax": "Max",
+        "liveWaiting": "Construction des bougies en direct — la première arrive dans quelques secondes…",
+        "chartTitle": "Historique du cours",
+        "chartError": "Le graphique est indisponible pour cet actif pour le moment.",
+        "cryptoBadge": "Crypto",
+        "stockBadge": "Action",
+        "forexBadge": "Devise",
+        "dataNote": "Données CoinGecko & Yahoo Finance — actualisées toutes les 5 minutes."
     }
 }

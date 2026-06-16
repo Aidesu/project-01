@@ -2,8 +2,9 @@
 
 import { useActionState } from "react";
 import { changePassword, type AuthFormState } from "@/app/actions/auth";
+import type { Dictionary } from "@/lib/i18n/dictionaries";
 
-export default function PasswordForm({ dict }: { dict: any }) {
+export default function PasswordForm({ dict }: { dict: Dictionary }) {
     const a = dict.account;
     const [state, action, pending] = useActionState<AuthFormState, FormData>(
         changePassword,

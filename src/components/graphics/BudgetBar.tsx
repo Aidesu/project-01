@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 // On utilise l'instance optimisée et configurée depuis ton dossier lib
 import echarts from "@/lib/echarts";
+import type { CallbackDataParams } from "echarts/types/dist/shared";
 
 interface BudgetBarProps {
     data: { name: string; value: number; itemStyle: { color: string } }[];
@@ -100,21 +101,23 @@ export default function BudgetBar({ data }: BudgetBarProps) {
                         position: "top",
                         distance: 10,
                         // On utilise une fonction pour calculer dynamiquement le pourcentage
-                        formatter: (params: any) => {
+                        formatter: (params: CallbackDataParams) => {
                             // 1. Calculer le total de tous les budgets du graphe
                             const total = data.reduce(
                                 (acc, item) => acc + item.value,
                                 0,
                             );
 
+                            const value = Number(params.value);
+
                             // 2. Calculer le pourcentage
                             const percent =
                                 total > 0
-                                    ? ((params.value / total) * 100).toFixed(0)
+                                    ? ((value / total) * 100).toFixed(0)
                                     : 0;
 
                             // 3. Retourner le texte final (Valeur + Pourcentage)
-                            return `${params.value}\n{percent|${percent}%}`;
+                            return `${value}\n{percent|${percent}%}`;
                         },
                         // Stylisation du pourcentage pour qu'il soit plus discret que la valeur
                         rich: {

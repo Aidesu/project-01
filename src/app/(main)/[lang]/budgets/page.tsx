@@ -1,5 +1,4 @@
-import GraphicCard2 from "@/components/modules/GraphicCard2";
-import BudgetBar from "@/components/graphics/BudgetBar";
+import BudgetCard from "@/components/budgets/BudgetCard";
 import Link from "next/link";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import { getBudgets } from "@/services/budgetService";
@@ -100,19 +99,23 @@ export default async function BudgetsPage({ params }: PageProps) {
                         budget.year === currentYear;
 
                     return (
-                        <GraphicCard2
+                        <BudgetCard
                             key={budget.id}
-                            month={formattedMonth}
+                            dict={dict}
+                            lang={lang}
+                            budgetId={budget.id}
+                            month={budget.month}
                             year={budget.year}
+                            items={budget.items}
+                            formattedMonth={formattedMonth}
                             isCurrent={isCurrent}
                             trend={{
                                 value: `${saveRate}%`,
                                 label: "save",
                                 type: saveRate >= 0 ? "up" : "down",
                             }}
-                        >
-                            <BudgetBar data={chartData} />
-                        </GraphicCard2>
+                            chartData={chartData}
+                        />
                     );
                 })}
             </div>

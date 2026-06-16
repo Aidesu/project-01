@@ -5,6 +5,7 @@
         "mainBoard": "Main Board",
         "analytics": "Analytics",
         "budgets": "Budgets",
+        "goals": "Goals",
         "markets": "Markets",
         "account": "Account",
         "connected": "Connected"
@@ -19,7 +20,7 @@
     "comingSoon": "Coming soon",
     "dashboard": {
         "analysisTitle": "Monthly Overview",
-        "analysisSubtitle": "Income, expenses and savings over the last 6 months",
+        "analysisSubtitle": "Stacked spending vs income — the gap below the line is what's left",
         "distributionTitle": "Expense Breakdown",
         "distributionSubtitle": "Current period",
         "noBudgetCurrentMonth": "No budget yet for this month.",
@@ -27,6 +28,18 @@
         "noDataYet": "No budget data yet",
         "createFirstBudget": "Create your first budget to get started.",
         "vsLastMonth": "vs last month",
+        "thisMonth": "This month",
+        "trends": "Trends",
+        "analysis": "Analysis",
+        "fullAnalysis": "View full analytics",
+        "leftToSpend": "Left to spend",
+        "overBudget": "Over budget",
+        "allocated": "{pct}% of income allocated",
+        "viewBudgets": "My budgets",
+        "goals": "Goals",
+        "viewAllGoals": "View all goals",
+        "goalsEmpty": "Create a savings goal to track it here.",
+        "createGoal": "Create a goal",
         "fixed": "Fixed",
         "variable": "Variable",
         "savings": "Savings",
@@ -72,11 +85,26 @@
     "budgets": {
         "title": "My Budgets",
         "newButton": "NEW",
-        "searchPlaceholder": "Search budgets..."
+        "searchPlaceholder": "Search budgets...",
+        "editAction": "Edit",
+        "deleteAction": "Delete"
     },
     "budgetForm": {
         "title": "Budget Management",
+        "editTitle": "Edit Budget",
         "saveButton": "Save Budget",
+        "overwriteModal": {
+            "title": "Existing budget",
+            "description": "A budget for {period} already exists. Do you want to overwrite it with these new values?",
+            "cancel": "Cancel",
+            "confirm": "Overwrite"
+        },
+        "deleteModal": {
+            "title": "Delete this budget?",
+            "description": "The budget for {period} will be permanently deleted. This action cannot be undone.",
+            "cancel": "Cancel",
+            "confirm": "Delete"
+        },
         "categories": {
             "income": "Income",
             "savings": "Savings & Investments",
@@ -119,5 +147,204 @@
             "magazines": "Magazines",
             "othersFixed": "Others"
         }
+    },
+    "analytics": {
+        "title": "Analytics",
+        "subtitle": "Deep dive into your budget data",
+        "exportCsv": "Export CSV",
+        "noDataYet": "No budget data yet",
+        "createFirstBudget": "Create your first budget to unlock analytics.",
+        "createBudget": "Create budget",
+        "yearStats": {
+            "totalSaved": "Saved this year",
+            "avgSavingsRate": "Avg savings rate",
+            "avgExpenses": "Avg monthly expenses",
+            "monthsTracked": "Months tracked"
+        },
+        "healthScore": {
+            "title": "Budget Health",
+            "subtitle": "Overall score for {period}",
+            "excellent": "Excellent",
+            "good": "Good",
+            "fair": "Fair",
+            "poor": "Needs attention",
+            "savingsRate": "Savings rate",
+            "spendingControl": "Spending control",
+            "safetyMargin": "Safety margin",
+            "noIncome": "Add income to this budget to compute a score."
+        },
+        "savingsGoal": {
+            "title": "Savings Goal",
+            "subtitle": "Progress for {period}",
+            "saved": "saved",
+            "ofGoal": "of {goal}",
+            "reached": "Goal reached!",
+            "remainingToGoal": "{amount} to go",
+            "noGoal": "No monthly savings goal set yet.",
+            "setGoal": "Set a goal"
+        },
+        "rule": {
+            "title": "50/30/20 Rule",
+            "subtitle": "Your allocation vs the recommended split",
+            "needs": "Needs",
+            "wants": "Wants",
+            "savings": "Savings",
+            "unallocated": "Unallocated",
+            "yourBudget": "Your budget",
+            "recommended": "Recommended",
+            "noIncome": "Add income to this budget to compare allocations."
+        },
+        "cashflow": {
+            "title": "Cash Flow",
+            "subtitle": "Income vs spending over the last 12 months",
+            "income": "Income",
+            "expenses": "Expenses",
+            "savings": "Savings"
+        },
+        "savingsRateChart": {
+            "title": "Savings Rate",
+            "subtitle": "Share of income saved each month",
+            "target": "20% target",
+            "rate": "Savings rate"
+        },
+        "comparison": {
+            "title": "vs Last Month",
+            "subtitle": "Change from {period}",
+            "income": "Income",
+            "expenses": "Expenses",
+            "savings": "Savings",
+            "remaining": "Remaining",
+            "noPrevious": "No previous month to compare with yet."
+        },
+        "topCategories": {
+            "title": "Top Spending Categories",
+            "subtitle": "Where your money goes — {period}",
+            "ofExpenses": "of expenses",
+            "noExpenses": "No expenses recorded for this period."
+        },
+        "insights": {
+            "title": "Insights",
+            "subtitle": "Automatic highlights from your data",
+            "expensesUp": "Your expenses increased by {pct}% compared to last month.",
+            "expensesDown": "Your expenses decreased by {pct}% compared to last month.",
+            "savingsRateLow": "You save {pct}% of your income — the recommended target is 20%.",
+            "savingsRateGood": "Great job! You save {pct}% of your income, above the 20% target.",
+            "goalReached": "You reached your monthly savings goal!",
+            "goalProgress": "You're at {pct}% of your monthly savings goal.",
+            "negativeRemaining": "Your spending exceeds your income this month.",
+            "topCategory": "{category} is your biggest expense ({pct}% of the total).",
+            "bestMonth": "Your best savings month this year was {month}.",
+            "noInsights": "Add more budget data to unlock insights."
+        }
+    },
+    "goals": {
+        "title": "Savings Goals",
+        "subtitle": "Set targets, watch them fill up",
+        "newGoal": "New goal",
+        "editGoal": "Edit goal",
+        "editAction": "Edit",
+        "deleteAction": "Delete",
+        "pinAction": "Pin to dashboard",
+        "unpinAction": "Unpin",
+        "contribute": "Add funds",
+        "noGoals": "No goals yet",
+        "createFirst": "Create your first goal and make saving fun.",
+        "summary": {
+            "saved": "Total saved",
+            "target": "Total target",
+            "reached": "Goals reached",
+            "overall": "Overall progress"
+        },
+        "form": {
+            "name": "Goal name",
+            "namePlaceholder": "e.g. Trip to Tokyo",
+            "type": "Theme",
+            "targetAmount": "Target amount",
+            "savedAmount": "Already saved",
+            "targetDate": "Target date (optional)",
+            "save": "Save goal",
+            "cancel": "Cancel",
+            "invalid": "Please enter a name and a target amount greater than 0."
+        },
+        "contributeModal": {
+            "title": "Add funds to “{name}”",
+            "amount": "Amount",
+            "confirm": "Add",
+            "cancel": "Cancel"
+        },
+        "deleteModal": {
+            "title": "Delete this goal?",
+            "description": "“{name}” will be permanently deleted. This action cannot be undone.",
+            "confirm": "Delete",
+            "cancel": "Cancel"
+        },
+        "types": {
+            "TRAVEL": "Travel",
+            "CAR": "Car",
+            "HOME": "Home",
+            "EMERGENCY": "Emergency fund",
+            "TECH": "Tech",
+            "EDUCATION": "Education",
+            "GIFT": "Gift",
+            "OTHER": "Other"
+        },
+        "card": {
+            "saved": "saved",
+            "of": "of",
+            "toGo": "{amount} to go",
+            "reached": "Goal reached!",
+            "boardingPass": "BOARDING PASS",
+            "flight": "FLIGHT",
+            "passenger": "PASSENGER",
+            "from": "FROM",
+            "to": "DESTINATION",
+            "savingsAccount": "SAVINGS",
+            "date": "DATE",
+            "gate": "GATE",
+            "seat": "SEAT",
+            "charging": "Charging…",
+            "fullyCharged": "Fully charged",
+            "underConstruction": "Under construction",
+            "moveInReady": "Move-in ready!",
+            "protected": "Protected",
+            "building": "Building protection…",
+            "cruising": "Cruising at {pct}%",
+            "arrived": "Arrived at destination!"
+        }
+    },
+    "markets": {
+        "title": "Markets",
+        "subtitle": "Track crypto and stock prices, then dive into the chart.",
+        "searchPlaceholder": "Search by name or symbol…",
+        "all": "All",
+        "crypto": "Crypto",
+        "stocks": "Stocks",
+        "forex": "Forex",
+        "asset": "Asset",
+        "price": "Price",
+        "change24h": "24h",
+        "last7d": "Trend",
+        "noResults": "No asset matches your search.",
+        "loadError": "Market data is unavailable right now. Try again in a few minutes.",
+        "back": "Markets",
+        "open": "Open",
+        "high": "High",
+        "low": "Low",
+        "close": "Close",
+        "volume": "Volume",
+        "range1mo": "1M",
+        "range3mo": "3M",
+        "range1y": "1Y",
+        "range5y": "5Y",
+        "rangeLive": "5s",
+        "range1d": "5min",
+        "rangeMax": "Max",
+        "liveWaiting": "Building live candles — first one in a few seconds…",
+        "chartTitle": "Price history",
+        "chartError": "Chart data is unavailable for this asset right now.",
+        "cryptoBadge": "Crypto",
+        "stockBadge": "Stock",
+        "forexBadge": "Forex",
+        "dataNote": "Data from CoinGecko & Yahoo Finance — refreshed every 5 minutes."
     }
 }

@@ -5,6 +5,7 @@
         "mainBoard": "ダッシュボード",
         "analytics": "分析",
         "budgets": "予算",
+        "goals": "目標",
         "markets": "マーケット",
         "account": "口座",
         "connected": "接続中"
@@ -19,7 +20,7 @@
     "comingSoon": "近日公開予定",
     "dashboard": {
         "analysisTitle": "月次推移",
-        "analysisSubtitle": "過去6ヶ月の収入・支出・貯蓄",
+        "analysisSubtitle": "支出の積み上げと収入の比較 — 線との差が残額です",
         "distributionTitle": "内訳",
         "distributionSubtitle": "今月",
         "noBudgetCurrentMonth": "今月の予算がまだ登録されていません。",
@@ -27,6 +28,18 @@
         "noDataYet": "データがまだありません",
         "createFirstBudget": "最初の予算を作成してください。",
         "vsLastMonth": "先月比",
+        "thisMonth": "今月",
+        "trends": "傾向",
+        "analysis": "分析",
+        "fullAnalysis": "詳細な分析を見る",
+        "leftToSpend": "残り使える金額",
+        "overBudget": "予算超過",
+        "allocated": "収入の{pct}%を配分済み",
+        "viewBudgets": "予算一覧",
+        "goals": "目標",
+        "viewAllGoals": "すべての目標を見る",
+        "goalsEmpty": "貯蓄目標を作成してここで追跡しましょう。",
+        "createGoal": "目標を作成",
         "fixed": "固定費",
         "variable": "変動費",
         "savings": "貯蓄",
@@ -72,11 +85,26 @@
     "budgets": {
         "title": "予算一覧",
         "newButton": "新規作成",
-        "searchPlaceholder": "予算を検索..."
+        "searchPlaceholder": "予算を検索...",
+        "editAction": "編集",
+        "deleteAction": "削除"
     },
     "budgetForm": {
         "title": "予算管理",
+        "editTitle": "予算を編集",
         "saveButton": "予算を保存",
+        "overwriteModal": {
+            "title": "既存の予算",
+            "description": "{period}の予算は既に存在します。新しい内容で上書きしますか？",
+            "cancel": "キャンセル",
+            "confirm": "上書き"
+        },
+        "deleteModal": {
+            "title": "この予算を削除しますか？",
+            "description": "{period}の予算は完全に削除されます。この操作は取り消せません。",
+            "cancel": "キャンセル",
+            "confirm": "削除"
+        },
         "categories": {
             "income": "収入",
             "savings": "貯蓄・投資",
@@ -119,5 +147,204 @@
             "magazines": "雑誌・書籍",
             "othersFixed": "その他"
         }
+    },
+    "analytics": {
+        "title": "分析",
+        "subtitle": "予算データを詳しく分析する",
+        "exportCsv": "CSVエクスポート",
+        "noDataYet": "予算データがまだありません",
+        "createFirstBudget": "最初の予算を作成して分析を始めましょう。",
+        "createBudget": "予算を作成",
+        "yearStats": {
+            "totalSaved": "今年の貯蓄額",
+            "avgSavingsRate": "平均貯蓄率",
+            "avgExpenses": "月平均支出",
+            "monthsTracked": "記録した月数"
+        },
+        "healthScore": {
+            "title": "家計の健全度",
+            "subtitle": "{period}の総合スコア",
+            "excellent": "優秀",
+            "good": "良好",
+            "fair": "普通",
+            "poor": "要注意",
+            "savingsRate": "貯蓄率",
+            "spendingControl": "支出管理",
+            "safetyMargin": "安全余裕",
+            "noIncome": "スコアを計算するには収入を入力してください。"
+        },
+        "savingsGoal": {
+            "title": "貯蓄目標",
+            "subtitle": "{period}の進捗",
+            "saved": "貯蓄済み",
+            "ofGoal": "目標 {goal}",
+            "reached": "目標達成！",
+            "remainingToGoal": "あと{amount}",
+            "noGoal": "月間貯蓄目標が未設定です。",
+            "setGoal": "目標を設定"
+        },
+        "rule": {
+            "title": "50/30/20ルール",
+            "subtitle": "あなたの配分と推奨配分の比較",
+            "needs": "必需品",
+            "wants": "娯楽",
+            "savings": "貯蓄",
+            "unallocated": "未配分",
+            "yourBudget": "あなたの予算",
+            "recommended": "推奨",
+            "noIncome": "配分を比較するには収入を入力してください。"
+        },
+        "cashflow": {
+            "title": "キャッシュフロー",
+            "subtitle": "過去12ヶ月の収入と支出",
+            "income": "収入",
+            "expenses": "支出",
+            "savings": "貯蓄"
+        },
+        "savingsRateChart": {
+            "title": "貯蓄率",
+            "subtitle": "毎月の収入に対する貯蓄の割合",
+            "target": "目標20%",
+            "rate": "貯蓄率"
+        },
+        "comparison": {
+            "title": "前月比",
+            "subtitle": "{period}からの変化",
+            "income": "収入",
+            "expenses": "支出",
+            "savings": "貯蓄",
+            "remaining": "残額",
+            "noPrevious": "比較できる前月のデータがまだありません。"
+        },
+        "topCategories": {
+            "title": "支出の多いカテゴリ",
+            "subtitle": "お金の使い道 — {period}",
+            "ofExpenses": "支出全体に対して",
+            "noExpenses": "この期間の支出はありません。"
+        },
+        "insights": {
+            "title": "インサイト",
+            "subtitle": "データから自動生成されたハイライト",
+            "expensesUp": "支出が先月より{pct}%増加しました。",
+            "expensesDown": "支出が先月より{pct}%減少しました。",
+            "savingsRateLow": "収入の{pct}%を貯蓄しています。推奨目標は20%です。",
+            "savingsRateGood": "素晴らしい！収入の{pct}%を貯蓄しており、目標の20%を上回っています。",
+            "goalReached": "月間貯蓄目標を達成しました！",
+            "goalProgress": "月間貯蓄目標の{pct}%まで到達しています。",
+            "negativeRemaining": "今月は支出が収入を上回っています。",
+            "topCategory": "最大の支出項目は{category}です（全体の{pct}%）。",
+            "bestMonth": "今年最も貯蓄できた月は{month}です。",
+            "noInsights": "より多くの予算データを追加するとインサイトが表示されます。"
+        }
+    },
+    "goals": {
+        "title": "貯蓄目標",
+        "subtitle": "目標を設定して、達成までの道のりを楽しもう",
+        "newGoal": "新しい目標",
+        "editGoal": "目標を編集",
+        "editAction": "編集",
+        "deleteAction": "削除",
+        "pinAction": "固定する",
+        "unpinAction": "固定を解除",
+        "contribute": "入金する",
+        "noGoals": "目標がまだありません",
+        "createFirst": "最初の目標を作成して、貯蓄を楽しくしましょう。",
+        "summary": {
+            "saved": "貯蓄合計",
+            "target": "目標合計",
+            "reached": "達成した目標",
+            "overall": "全体の進捗"
+        },
+        "form": {
+            "name": "目標の名前",
+            "namePlaceholder": "例：東京旅行",
+            "type": "テーマ",
+            "targetAmount": "目標金額",
+            "savedAmount": "貯蓄済み金額",
+            "targetDate": "目標日（任意）",
+            "save": "目標を保存",
+            "cancel": "キャンセル",
+            "invalid": "名前と0より大きい目標金額を入力してください。"
+        },
+        "contributeModal": {
+            "title": "「{name}」に入金",
+            "amount": "金額",
+            "confirm": "追加",
+            "cancel": "キャンセル"
+        },
+        "deleteModal": {
+            "title": "この目標を削除しますか？",
+            "description": "「{name}」は完全に削除されます。この操作は取り消せません。",
+            "confirm": "削除",
+            "cancel": "キャンセル"
+        },
+        "types": {
+            "TRAVEL": "旅行",
+            "CAR": "車",
+            "HOME": "住まい",
+            "EMERGENCY": "緊急資金",
+            "TECH": "ガジェット",
+            "EDUCATION": "教育",
+            "GIFT": "プレゼント",
+            "OTHER": "その他"
+        },
+        "card": {
+            "saved": "貯蓄済み",
+            "of": "/",
+            "toGo": "あと{amount}",
+            "reached": "目標達成！",
+            "boardingPass": "搭乗券",
+            "flight": "便",
+            "passenger": "搭乗者",
+            "from": "出発",
+            "to": "目的地",
+            "savingsAccount": "貯蓄",
+            "date": "日付",
+            "gate": "ゲート",
+            "seat": "座席",
+            "charging": "充電中…",
+            "fullyCharged": "フル充電",
+            "underConstruction": "建設中",
+            "moveInReady": "入居準備完了！",
+            "protected": "保護済み",
+            "building": "保護を構築中…",
+            "cruising": "進捗{pct}%で巡航中",
+            "arrived": "目的地に到着！"
+        }
+    },
+    "markets": {
+        "title": "マーケット",
+        "subtitle": "暗号資産と株式の価格を確認し、チャートで詳しく見る。",
+        "searchPlaceholder": "名前またはシンボルで検索…",
+        "all": "すべて",
+        "crypto": "暗号資産",
+        "stocks": "株式",
+        "forex": "為替",
+        "asset": "銘柄",
+        "price": "価格",
+        "change24h": "24時間",
+        "last7d": "トレンド",
+        "noResults": "検索条件に一致する銘柄がありません。",
+        "loadError": "市場データを取得できません。しばらくしてから再試行してください。",
+        "back": "マーケット",
+        "open": "始値",
+        "high": "高値",
+        "low": "安値",
+        "close": "終値",
+        "volume": "出来高",
+        "range1mo": "1ヶ月",
+        "range3mo": "3ヶ月",
+        "range1y": "1年",
+        "range5y": "5年",
+        "rangeLive": "5秒",
+        "range1d": "5分",
+        "rangeMax": "全期間",
+        "liveWaiting": "ライブローソク足を生成中 — 数秒で最初の足が表示されます…",
+        "chartTitle": "価格チャート",
+        "chartError": "この銘柄のチャートは現在利用できません。",
+        "cryptoBadge": "暗号資産",
+        "stockBadge": "株式",
+        "forexBadge": "為替",
+        "dataNote": "データ提供: CoinGecko & Yahoo Finance — 5分ごとに更新。"
     }
 }

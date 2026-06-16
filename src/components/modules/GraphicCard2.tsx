@@ -9,6 +9,8 @@ interface GraphicCard2Props {
     isCurrent?: boolean;
     onModify?: () => void;
     onDelete?: () => void;
+    modifyLabel?: string;
+    deleteLabel?: string;
     trend?: {
         value: string;
         label: string;
@@ -23,6 +25,8 @@ export default function GraphicCard2({
     isCurrent = false,
     onModify,
     onDelete,
+    modifyLabel = "Modifier",
+    deleteLabel = "Supprimer",
     trend,
 }: GraphicCard2Props) {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -143,7 +147,7 @@ export default function GraphicCard2({
                                     }}
                                     className="w-full px-3 py-2 text-[11px] text-zinc-300 hover:bg-zinc-900 hover:text-purple-400 transition-colors text-left"
                                 >
-                                    Modifier
+                                    {modifyLabel}
                                 </button>
                                 <button
                                     onClick={() => {
@@ -152,7 +156,7 @@ export default function GraphicCard2({
                                     }}
                                     className="w-full px-3 py-2 text-[11px] text-red-400 hover:bg-red-950/20 transition-colors text-left border-t border-zinc-900"
                                 >
-                                    Supprimer
+                                    {deleteLabel}
                                 </button>
                             </div>
                         </>

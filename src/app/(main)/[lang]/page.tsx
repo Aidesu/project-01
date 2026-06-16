@@ -1,10 +1,17 @@
 import Link from "next/link";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import { getDashboardData } from "@/services/budgetService";
+import { getAnalyticsData } from "@/services/analyticsService";
+import { getGoals, pickDashboardGoals } from "@/services/goalService";
 import { getCurrentUser } from "@/lib/dal";
 import StatCard from "@/components/main/StatCard";
+import BalanceHeroCard from "@/components/dashboard/BalanceHeroCard";
 import DashboardCharts from "@/components/dashboard/DashboardCharts";
-import type { ColorTheme } from "@/components/main/StatCard";
+import GoalMiniCard from "@/components/goals/GoalMiniCard";
+import SavingsGoalCard from "@/components/analytics/SavingsGoalCard";
+import TopCategoriesCard from "@/components/analytics/TopCategoriesCard";
+import InsightsCard from "@/components/analytics/InsightsCard";
+import type { ColorTheme, StatIcon } from "@/components/main/StatCard";
 
 interface PageProps {
     params: Promise<{ lang: string }>;
@@ -21,16 +28,39 @@ function calcTrend(current: number, previous: number | undefined): number | null
     return ((current - previous) / previous) * 100;
 }
 
+/** Titre de section discret — structure la lecture du dashboard. */
+function SectionTitle({
+    children,
+    action,
+}: {
+    children: React.ReactNode;
+    action?: React.ReactNode;
+}) {
+    return (
+        <div className="flex items-center justify-between mb-3">
+            <h2 className="text-[11px] font-semibold uppercase tracking-widest text-zinc-500">
+                {children}
+            </h2>
+            {action}
+        </div>
+    );
+}
+
 export default async function DashboardPage({ params }: PageProps) {
     const { lang } = await params;
 
-    const [dict, data, user] = await Promise.all([
+    const [dict, data, analytics, goals, user] = await Promise.all([
         getDictionary(lang),
         getDashboardData(),
+        getAnalyticsData(),
+        getGoals(),
         getCurrentUser(),
     ]);
 
+    const featuredGoals = pickDashboardGoals(goals, 3);
+
     const locale = LOCALE_MAP[lang] ?? "en-US";
+    const currency = analytics.currency;
 
     // ── État vide : aucun budget ─────────────────────────────────────────────
     if (!data.hasBudgets) {
@@ -66,13 +96,19 @@ export default async function DashboardPage({ params }: PageProps) {
     const s = data.summary!;
     const p = data.previousSummary;
 
-    const kpi: { key: keyof typeof s; theme: ColorTheme }[] = [
-        { key: "income",    theme: "emerald" },
-        { key: "fixed",     theme: "orange"  },
-        { key: "variable",  theme: "blue"    },
-        { key: "savings",   theme: "purple"  },
-        { key: "remaining", theme: "purple"  },
+    const kpi: { key: keyof typeof s; theme: ColorTheme; icon: StatIcon; upIsGood: boolean }[] = [
+        { key: "income",   theme: "emerald", icon: "income",   upIsGood: true },
+        { key: "fixed",    theme: "orange",  icon: "fixed",    upIsGood: false },
+        { key: "variable", theme: "blue",    icon: "variable", upIsGood: false },
+        { key: "savings",  theme: "purple",  icon: "savings",  upIsGood: true },
     ];
+
+    const dictKpiName: Record<string, string> = {
+        income:   dict.totalIncome,
+        fixed:    dict.totalFixedExpenses,
+        variable: dict.totalVariableExpenses,
+        savings:  dict.totalSavings,
+    };
 
     // ── Période de référence ─────────────────────────────────────────────────
     const periodLabel = data.summaryPeriod
@@ -81,18 +117,10 @@ export default async function DashboardPage({ params }: PageProps) {
           )
         : "";
 
-    const dictKpiName: Record<string, string> = {
-        income:    dict.totalIncome,
-        fixed:     dict.totalFixedExpenses,
-        variable:  dict.totalVariableExpenses,
-        savings:   dict.totalSavings,
-        remaining: dict.remaining,
-    };
-
     return (
-        <div className="space-y-6">
-            {/* ── Header ─────────────────────────────────────────────────── */}
-            <div className="flex items-center justify-between">
+        <div className="space-y-8">
+            {/* ── Header : bienvenue + CTA contextuel ─────────────────────── */}
+            <div className="flex flex-wrap items-center justify-between gap-4">
                 <div>
                     <h1 className="text-2xl font-bold text-white">
                         {dict.welcome}
@@ -105,15 +133,27 @@ export default async function DashboardPage({ params }: PageProps) {
                     )}
                 </div>
 
-                <Link
-                    href={`/${lang}/budgets/new`}
-                    className="flex items-center gap-2 rounded-lg border border-zinc-800 bg-[#0d0d11] px-4 py-2 text-sm font-medium text-zinc-300 transition hover:border-purple-500/40 hover:text-white"
-                >
-                    <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                    </svg>
-                    {dict.dashboard?.createBudget}
-                </Link>
+                {data.isCurrentMonth ? (
+                    <Link
+                        href={`/${lang}/budgets`}
+                        className="flex items-center gap-2 rounded-lg border border-zinc-800 bg-[#0d0d11] px-4 py-2 text-sm font-medium text-zinc-300 transition hover:border-purple-500/40 hover:text-white"
+                    >
+                        <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 12h16.5m-16.5 3.75h16.5M3.75 19.5h16.5M5.625 4.5h12.75a1.875 1.875 0 010 3.75H5.625a1.875 1.875 0 010-3.75z" />
+                        </svg>
+                        {dict.dashboard?.viewBudgets}
+                    </Link>
+                ) : (
+                    <Link
+                        href={`/${lang}/budgets/new`}
+                        className="flex items-center gap-2 rounded-lg bg-purple-600 hover:bg-purple-500 px-4 py-2 text-sm font-medium text-white transition shadow-lg shadow-purple-900/30"
+                    >
+                        <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                        </svg>
+                        {dict.dashboard?.createBudget}
+                    </Link>
+                )}
             </div>
 
             {/* ── Bannière : pas de budget pour le mois en cours ─────────── */}
@@ -136,27 +176,131 @@ export default async function DashboardPage({ params }: PageProps) {
                 </div>
             )}
 
-            {/* ── KPI Cards ───────────────────────────────────────────────── */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-5 gap-4">
-                {kpi.map(({ key, theme }) => (
-                    <StatCard
-                        key={key}
-                        name={dictKpiName[key]}
-                        amount={s[key]}
-                        colorTheme={theme}
-                        locale={locale}
-                        trend={p ? calcTrend(s[key], p[key]) : null}
-                    />
-                ))}
-            </div>
+            {/* ── Ce mois-ci : héro « reste à dépenser » + objectif + KPI ── */}
+            <section>
+                <SectionTitle>{dict.dashboard?.thisMonth}</SectionTitle>
 
-            {/* ── Charts ──────────────────────────────────────────────────── */}
-            <DashboardCharts
-                evolution={data.evolution}
-                distribution={data.distribution}
-                lang={lang}
-                dict={dict}
-            />
+                <div className="grid grid-cols-1 xl:grid-cols-3 gap-4">
+                    <div className="xl:col-span-2">
+                        <BalanceHeroCard
+                            summary={s}
+                            previous={p}
+                            periodLabel={periodLabel}
+                            locale={locale}
+                            currency={currency}
+                            dict={dict}
+                        />
+                    </div>
+                    <SavingsGoalCard
+                        current={analytics.current}
+                        savingsGoal={analytics.savingsGoal}
+                        currency={currency}
+                        lang={lang}
+                        locale={locale}
+                        dict={dict}
+                    />
+                </div>
+
+                <div className="grid grid-cols-2 xl:grid-cols-4 gap-4 mt-4">
+                    {kpi.map(({ key, theme, icon, upIsGood }) => (
+                        <StatCard
+                            key={key}
+                            name={dictKpiName[key]}
+                            amount={s[key]}
+                            colorTheme={theme}
+                            locale={locale}
+                            currency={currency}
+                            icon={icon}
+                            trend={p ? calcTrend(s[key], p[key]) : null}
+                            trendLabel={dict.dashboard?.vsLastMonth}
+                            trendUpIsGood={upIsGood}
+                        />
+                    ))}
+                </div>
+            </section>
+
+            {/* ── Objectifs : épinglés puis les plus proches du but ──────── */}
+            <section>
+                <SectionTitle
+                    action={
+                        <Link
+                            href={`/${lang}/goals`}
+                            className="text-[11px] font-semibold text-purple-400 transition hover:text-purple-300"
+                        >
+                            {dict.dashboard?.viewAllGoals} →
+                        </Link>
+                    }
+                >
+                    {dict.dashboard?.goals}
+                </SectionTitle>
+
+                {featuredGoals.length > 0 ? (
+                    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+                        {featuredGoals.map((goal) => (
+                            <GoalMiniCard
+                                key={goal.id}
+                                goal={goal}
+                                lang={lang}
+                                locale={locale}
+                                currency={currency}
+                            />
+                        ))}
+                    </div>
+                ) : (
+                    <Link
+                        href={`/${lang}/goals`}
+                        className="flex items-center justify-between gap-4 rounded-xl border border-dashed border-zinc-800 px-4 py-3.5 transition hover:border-purple-500/40 group"
+                    >
+                        <p className="text-sm text-zinc-500 group-hover:text-zinc-300 transition-colors">
+                            {dict.dashboard?.goalsEmpty}
+                        </p>
+                        <span className="shrink-0 rounded-lg bg-purple-500/10 border border-purple-500/25 px-3 py-1 text-xs font-semibold text-purple-300">
+                            {dict.dashboard?.createGoal} →
+                        </span>
+                    </Link>
+                )}
+            </section>
+
+            {/* ── Tendances : évolution + répartition ────────────────────── */}
+            <section>
+                <SectionTitle>{dict.dashboard?.trends}</SectionTitle>
+                <DashboardCharts
+                    months={analytics.months}
+                    distribution={data.distribution}
+                    lang={lang}
+                    locale={locale}
+                    currency={currency}
+                    dict={dict}
+                />
+            </section>
+
+            {/* ── Analyse : top dépenses + insights ───────────────────────── */}
+            <section>
+                <SectionTitle
+                    action={
+                        <Link
+                            href={`/${lang}/analytics`}
+                            className="text-[11px] font-semibold text-purple-400 transition hover:text-purple-300"
+                        >
+                            {dict.dashboard?.fullAnalysis} →
+                        </Link>
+                    }
+                >
+                    {dict.dashboard?.analysis}
+                </SectionTitle>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <TopCategoriesCard
+                        topCategories={analytics.topCategories}
+                        current={analytics.current}
+                        currency={currency}
+                        lang={lang}
+                        locale={locale}
+                        dict={dict}
+                    />
+                    <InsightsCard insights={analytics.insights} lang={lang} dict={dict} limit={4} />
+                </div>
+            </section>
         </div>
     );
 }

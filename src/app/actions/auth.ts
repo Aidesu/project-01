@@ -13,6 +13,7 @@ import {
     loginSchema,
     registerSchema,
     updateProfileSchema,
+    LOCALES,
 } from "@/lib/validation/auth";
 
 const DEFAULT_REDIRECT = "/en";
@@ -98,7 +99,37 @@ export async function login(
         return { message: "Une erreur est survenue. Réessayez." };
     }
 
-    redirect(DEFAULT_REDIRECT);
+    // Applique la langue préférée de l'utilisateur (Compte → Préférences).
+    let locale = "en";
+    try {
+        const user = await db.user.findUnique({
+            where: { email: parsed.data.email },
+            select: { locale: true },
+        });
+        if (user?.locale) locale = user.locale;
+    } catch {
+        // Lecture facultative : on retombe sur la locale par défaut.
+    }
+    redirect(`/${locale}`);
+}
+
+/**
+ * Persiste la langue choisie via le sélecteur du header, pour que le choix
+ * survive aux sessions (cohérent avec Compte → Préférences → Langue).
+ */
+export async function updateLocale(locale: string) {
+    const session = await verifySession();
+
+    if (!(LOCALES as readonly string[]).includes(locale)) return;
+
+    try {
+        await db.user.update({
+            where: { id: session.userId },
+            data: { locale },
+        });
+    } catch {
+        // Best-effort : la navigation vers la nouvelle langue a déjà lieu côté client.
+    }
 }
 
 /** Déconnexion. */
