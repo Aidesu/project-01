@@ -1,4 +1,4 @@
-<div align="">
+<div align="center">
 
 # StatEko
 
@@ -13,6 +13,7 @@ Monthly budgets, savings goals, analytics and market tracking — all in a moder
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-17-4169E1?logo=postgresql&logoColor=white)](https://www.postgresql.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-4-06B6D4?logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](#-license)
+[![Built with Claude Code](https://img.shields.io/badge/Built%20with-Claude%20Code-D97757?logo=anthropic&logoColor=white)](https://claude.com/claude-code)
 
 </div>
 
@@ -49,7 +50,7 @@ Monthly budgets, savings goals, analytics and market tracking — all in a moder
 | 💰 **Budgets**        | Detailed monthly budgets broken down by category (income, fixed costs, variable expenses, savings) |
 | 🎯 **Goals**          | Typed savings goals (travel, car, home, emergency…) with progress tracking and pinning             |
 | 📈 **Analytics**      | Monthly overview, expense breakdown, and trends powered by ECharts                                 |
-| 📉 **Markets**        | Asset tracking with real-time prices (polled every 5 s)                                            |
+| 🪙 **Markets**        | Asset tracking with real-time prices (polled every 5 s)                                            |
 | 🌍 **Multilingual**   | Per-language routing (`/[lang]`) — English, French, Japanese                                       |
 | 🎨 **Modern UI**      | Responsive design with Tailwind CSS 4 and FontAwesome icons                                        |
 
@@ -82,7 +83,7 @@ Monthly budgets, savings goals, analytics and market tracking — all in a moder
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/Aidesu/project-01
+git clone https://github.com/Aidesu/project-01.git
 cd project-01
 
 # 2. Install dependencies
@@ -170,7 +171,7 @@ Released under the **MIT** License. See the `LICENSE` file for details.
 
 ---
 
-<div align="">
+<div align="center">
 
 created by **[Carla Deafiaa](https://github.com/<your-account>)**
 
